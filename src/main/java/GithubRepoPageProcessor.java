@@ -19,6 +19,7 @@ public class GithubRepoPageProcessor implements PageProcessor {
 
     @Override
     public void process(Page page) {
+        System.out.println(page.getUrl());
         System.out.println(page.getHeaders());
 
 //        page.addTargetRequests(page.getHtml().links().regex("(https://github\\.com/\\w+/\\w+)").all());
@@ -42,9 +43,11 @@ public class GithubRepoPageProcessor implements PageProcessor {
         Spider spider = new Spider(new GithubRepoPageProcessor());
 
         while(1==1){
-            spider.addUrl("http://www.baidu.com/link?url=SCZi8UF0UZ_L688dALi_w1gDL5G4G5QYs30-1mv7nDPcaRH-DKymS_5gRnDhJ4MGUGe5SaKOsc_3I4q_IBOIJ_");
             spider.thread(5);
             spider.run();
+            //spider.setDownloader(new FinalDownloader());
+            spider.addUrl("http://www.baidu.com/link?url=SCZi8UF0UZ_L688dALi_w1gDL5G4G5QYs30-1mv7nDPcaRH-DKymS_5gRnDhJ4MGUGe5SaKOsc_3I4q_IBOIJ_");
+
             try {
                 Thread.sleep(5000);
             } catch (InterruptedException e) {
