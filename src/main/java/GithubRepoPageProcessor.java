@@ -40,8 +40,18 @@ public class GithubRepoPageProcessor implements PageProcessor {
         BasicConfigurator.configure();
 
         Spider spider = new Spider(new GithubRepoPageProcessor());
-        spider.addUrl("http://www.baidu.com/link?url=SCZi8UF0UZ_L688dALi_w1gDL5G4G5QYs30-1mv7nDPcaRH-DKymS_5gRnDhJ4MGUGe5SaKOsc_3I4q_IBOIJ_");
-        spider.thread(5);
-        spider.run();
+
+        while(1==1){
+            spider.addUrl("http://www.baidu.com/link?url=SCZi8UF0UZ_L688dALi_w1gDL5G4G5QYs30-1mv7nDPcaRH-DKymS_5gRnDhJ4MGUGe5SaKOsc_3I4q_IBOIJ_");
+            spider.thread(5);
+            spider.run();
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.println("xxxxxxx");
+        }
+
     }
 }
