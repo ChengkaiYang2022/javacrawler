@@ -59,7 +59,7 @@ public class FinalDownloader extends HttpClientDownloader {
             URI location = URIUtils.resolve(requestContext.getHttpUriRequest().getURI(), target, redirectLocations);
             //logger.debug("Final HTTP location: " + location.toASCIIString());
             last_redirect_url = location.toASCIIString();
-        } catch (URISyntaxException e) {
+        }catch (URISyntaxException e) {
             //logger.error("getFinalHTTPLocation error",e);
         }catch (InterruptedException e) {
             e.printStackTrace();
