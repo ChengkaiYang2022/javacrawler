@@ -13,7 +13,7 @@ public class GithubRepoPageProcessor implements PageProcessor {
     @Override
     public void process(Page page) {
         System.out.println(page.getUrl());
-        System.out.println(page.getHeaders());
+
     }
 
     @Override
@@ -31,13 +31,13 @@ public class GithubRepoPageProcessor implements PageProcessor {
             spider.run();
             spider.setDownloader(new RedirectDownloader());
             spider.addUrl("http://www.baidu.com/link?url=SCZi8UF0UZ_L688dALi_w1gDL5G4G5QYs30-1mv7nDPcaRH-DKymS_5gRnDhJ4MGUGe5SaKOsc_3I4q_IBOIJ_");
-
+            String URL3 = "http://www.baidu.com/link?url=---yJOodqyT2CM0ueRB8pF3fWwYEe8Bb0GQp8rctUtho_Q7N5VnGO9bK8I_4D5rb021bASfA7sIvl6WqjisCaK";
+            spider.addUrl(URL3);
             try {
                 Thread.sleep(5000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            System.out.println("xxxxxxx");
         }
 
     }

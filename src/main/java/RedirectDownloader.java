@@ -19,12 +19,16 @@ public class RedirectDownloader extends HttpClientDownloader {
     @Override
     public Page download(Request request, Task task) {
         if (logger.isInfoEnabled()) {
-            logger.info("downloading page: " + request.getUrl());
+            logger.info("redirecting link: " + request.getUrl());
         }
         Page page = new Page();
-        page.setUrl(new PlainText(getRedirectUrl(request.getUrl())));
+        String redirectUrl = getRedirectUrl(request.getUrl());
+        logger.info("get redirected link: " + redirectUrl);
+
+        page.setUrl(new PlainText(redirectUrl));
         page.setRequest(request);
         page.setStatusCode(200);
+
         return page;
     }
     public String getRedirectUrl(String url){
@@ -33,15 +37,13 @@ public class RedirectDownloader extends HttpClientDownloader {
         HttpGet httpGet = new HttpGet(url);
         String redirectUrl = null;
         try {
-            //将HttpContext对象作为参数传给execute()方法,则HttpClient会把请求响应交互过程中的状态信息存储在HttpContext中
-            HttpResponse response = httpClient.execute(httpGet, httpContext);
+            httpClient.execute(httpGet, httpContext);
             //获取重定向之后的主机地址信息
-            Object a = httpContext.getAttribute(HttpCoreContext.HTTP_TARGET_HOST);
             HttpHost targetHost = (HttpHost)httpContext.getAttribute(HttpCoreContext.HTTP_TARGET_HOST);
             //获取实际的请求对象的URI
             HttpUriRequest realRequest = (HttpUriRequest)httpContext.getAttribute(HttpCoreContext.HTTP_REQUEST);
+            //拼接为链接
             redirectUrl = targetHost.toString() + realRequest.getURI().toString();
-            logger.info(redirectUrl);
         } catch (Exception e) {
             e.printStackTrace();
         }finally{
