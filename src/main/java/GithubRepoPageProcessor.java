@@ -1,4 +1,5 @@
 import org.apache.log4j.BasicConfigurator;
+import scheduler.KafkaConsumerScheduler;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.Spider;
@@ -25,8 +26,9 @@ public class GithubRepoPageProcessor implements PageProcessor {
         BasicConfigurator.configure();
 
         Spider spider = new Spider(new GithubRepoPageProcessor());
-
         while(1==1){
+
+
             spider.thread(5);
             spider.run();
             spider.setDownloader(new RedirectDownloader());
