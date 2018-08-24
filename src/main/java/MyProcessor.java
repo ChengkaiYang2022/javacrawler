@@ -2,11 +2,10 @@ import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.log4j.BasicConfigurator;
+import pipeline.KafkaPublisherPipeline;
 import us.codecraft.webmagic.Page;
-import us.codecraft.webmagic.Request;
 import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.Spider;
-import us.codecraft.webmagic.pipeline.FilePipeline;
 import us.codecraft.webmagic.processor.PageProcessor;
 
 import java.util.Arrays;
@@ -35,7 +34,8 @@ public class MyProcessor implements PageProcessor {
         Spider spider = new Spider(new GithubRepoPageProcessor());
 
         spider.setDownloader(new RedirectDownloader());
-        spider.addPipeline(new FilePipeline("/home/yangck/githubWorkspace/javacrawler/result/"));
+        spider.addPipeline(new KafkaPublisherPipeline());
+        //spider.addPipeline(new FilePipeline("/home/yangck/githubWorkspace/javacrawler/result/"));
         Properties properties = new Properties();
         properties.put("bootstrap.servers", "blackbox01.jry.com:6667");
         properties.put("group.id", "CRAWLER_JAVA");
