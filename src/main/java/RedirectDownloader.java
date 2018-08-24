@@ -24,8 +24,7 @@ public class RedirectDownloader extends HttpClientDownloader {
         Page page = new Page();
         String redirectUrl = getRedirectUrl(request.getUrl());
         logger.info("get redirected link: " + redirectUrl);
-
-        page.setUrl(new PlainText(redirectUrl));
+        page.putField("redirectUrl",redirectUrl);
         page.setRequest(request);
         page.setStatusCode(200);
 
