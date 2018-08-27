@@ -1,7 +1,12 @@
+package downloader;
+
 import downloader.RedirectDownloader;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Request;
 import us.codecraft.webmagic.Site;
@@ -33,24 +38,31 @@ public class RedirectDownloaderTest {
         Task task = Site.me().setDomain("localhost").setCycleRetryTimes(5).toTask();
         RedirectDownloader redirectDownloader = new RedirectDownloader();
         Page page = redirectDownloader.download(request,task);
-        System.out.println(page);
+
+        assertEquals(page.getResultItems().get("redirectUrl"),"https://www.cnblogs.com/showing/p/6752611.html");
+        System.out.println(page.getResultItems().get("redirectUrl")+" 测试通过");
+
     }
+
     @Test
     public void test_getRedirectInfo(){
         RedirectDownloader redirectDownloader = new RedirectDownloader();
         for (String url:this.testUrl){
             String result = redirectDownloader.getRedirectUrl(url);
+            assertNotNull(result);
             System.out.println(result);
         }
 
     }
+    // 测试百度知道 连接
     @Test
     public void testRedirectDownloaderTestBaiduZhidao(){
         Request request = new Request("http://baike.baidu.com/subview/38681/5279942.htm");
         Task task = Site.me().setDomain("localhost").setCycleRetryTimes(5).toTask();
         RedirectDownloader redirectDownloader = new RedirectDownloader();
         Page page = redirectDownloader.download(request,task);
-        System.out.println(page);
+        assertEquals(page.getResultItems().get("redirectUrl"),"https://baike.baidu.com/item/%E9%82%93%E8%B6%85/5681");
+        System.out.println(page.getResultItems().get("redirectUrl")+" 测试通过");
     }
 
 
