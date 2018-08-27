@@ -1,3 +1,4 @@
+import downloader.RedirectDownloader;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -26,7 +27,7 @@ public class RedirectDownloaderTest {
 
     }
 
-    @Ignore
+    @Test
     public void testFinalDownloaderTest(){
         Request request = new Request(URL);
         Task task = Site.me().setDomain("localhost").setCycleRetryTimes(5).toTask();
@@ -43,7 +44,7 @@ public class RedirectDownloaderTest {
         }
 
     }
-    @Ignore
+    @Test
     public void testRedirectDownloaderTestBaiduZhidao(){
         Request request = new Request("http://baike.baidu.com/subview/38681/5279942.htm");
         Task task = Site.me().setDomain("localhost").setCycleRetryTimes(5).toTask();

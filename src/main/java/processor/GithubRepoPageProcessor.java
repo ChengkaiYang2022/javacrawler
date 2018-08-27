@@ -1,3 +1,6 @@
+package processor;
+
+import downloader.RedirectDownloader;
 import org.apache.log4j.BasicConfigurator;
 import scheduler.KafkaConsumerScheduler;
 import us.codecraft.webmagic.Page;
