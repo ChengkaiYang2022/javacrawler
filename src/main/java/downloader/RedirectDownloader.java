@@ -1,7 +1,6 @@
 package downloader;
 
 import org.apache.http.HttpHost;
-import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpUriRequest;
@@ -13,7 +12,6 @@ import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Request;
 import us.codecraft.webmagic.Task;
 import us.codecraft.webmagic.downloader.*;
-import us.codecraft.webmagic.selector.PlainText;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 public class RedirectDownloader extends HttpClientDownloader {
