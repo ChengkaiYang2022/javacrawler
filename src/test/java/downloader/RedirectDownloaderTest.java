@@ -17,21 +17,15 @@ import java.util.List;
 
 public class RedirectDownloaderTest {
 
-    private List<String> testUrl = new ArrayList<String>();
-    private String URL = "http://www.baidu.com/link?url=SCZi8UF0UZ_L688dALi_w1gDL5G4G5QYs30-1mv7nDPcaRH-DKymS_5gRnDhJ4MGUGe5SaKOsc_3I4q_IBOIJ_";
-
+    private String URL = null;
     @Before
     public void init(){
-        String URL_CNBLOG = "http://www.baidu.com/link?url=SCZi8UF0UZ_L688dALi_w1gDL5G4G5QYs30-1mv7nDPcaRH-DKymS_5gRnDhJ4MGUGe5SaKOsc_3I4q_IBOIJ_";
-        String URL_TIANHONG = "http://www.baidu.com/link?url=---33rXjyw861WwuVBNKwS0yaha5l_z0I9tBaJ-_3JMIK98rHB6WWT3EW3g1IshPfr1yD8IGCj1l83arAFAmB2mK4ZVOkFrrMG9c4UzIOMUA8tE8gQwnhtXtFFV6Hfs0";
-        String URL3 = "http://www.baidu.com/link?url=---yJOodqyT2CM0ueRB8pF3fWwYEe8Bb0GQp8rctUtho_Q7N5VnGO9bK8I_4D5rb021bASfA7sIvl6WqjisCaK";
+        URL = "http://www.baidu.com/link?url=SCZi8UF0UZ_L688dALi_w1gDL5G4G5QYs30-1mv7nDPcaRH-DKymS_5gRnDhJ4MGUGe5SaKOsc_3I4q_IBOIJ_";
 
-        testUrl.add(URL_CNBLOG);
-        testUrl.add(URL_TIANHONG);
-        testUrl.add(URL3);
 
     }
 
+    // 测试百度跳转链接
     @Test
     public void testFinalDownloaderTest(){
         Request request = new Request(URL);
@@ -44,17 +38,7 @@ public class RedirectDownloaderTest {
 
     }
 
-    @Test
-    public void test_getRedirectInfo(){
-        RedirectDownloader redirectDownloader = new RedirectDownloader();
-        for (String url:this.testUrl){
-            String result = redirectDownloader.getRedirectUrl(url);
-            assertNotNull(result);
-            System.out.println(result);
-        }
-
-    }
-    // 测试百度知道 连接
+    // 测试百度知道连接
     @Test
     public void testRedirectDownloaderTestBaiduZhidao(){
         Request request = new Request("http://baike.baidu.com/subview/38681/5279942.htm");
